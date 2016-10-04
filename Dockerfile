@@ -15,8 +15,12 @@ RUN set -x && \
     echo "PermitRootLogin no" >> /etc/ssh/sshd_config && \
     echo "AllowGroups jenkins" >> /etc/ssh/sshd_config
 
+RUN apk --update add sudo && \
+    rm -rf /var/cache/apk/* && \
+echo "%jenkins ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 
 USER jenkins
+RUN touch ~/.sudo_as_admin_successful
 WORKDIR /home/jenkins
 
 EXPOSE 22
