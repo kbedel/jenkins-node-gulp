@@ -12,5 +12,6 @@ RUN set -x && \
 
 ADD mkuser.sh /var/mkuser.sh
 
-EXPOSE 22
+RUN npm install -g jspm jspm-bower-endpoint && jspm registry create bower jspm-bower-endpoint
+
 CMD ["sh", "-c", "sh /var/mkuser.sh && /usr/sbin/sshd -d"]
