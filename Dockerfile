@@ -1,4 +1,4 @@
-FROM mhart/alpine-node:10.2
+FROM mhart/alpine-node:10.19
 
 RUN apk update && apk upgrade && \
     echo @edge http://nl.alpinelinux.org/alpine/edge/community >> /etc/apk/repositories && \
