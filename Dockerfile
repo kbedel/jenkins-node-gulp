@@ -1,12 +1,8 @@
 FROM mhart/alpine-node:12.16
 
 RUN apk update && apk upgrade && \
-    echo @edge http://nl.alpinelinux.org/alpine/edge/community >> /etc/apk/repositories && \
-    echo @edge http://nl.alpinelinux.org/alpine/edge/testing >> /etc/apk/repositories && \
-    echo @edge http://nl.alpinelinux.org/alpine/edge/main >> /etc/apk/repositories && \
-    apk --no-cache add openjdk8-jre openssh git chromium@edge nss@edge \
-        ttf-dejavu ttf-droid ttf-freefont ttf-liberation ttf-ubuntu-font-family ttf-opensans font-adobe-100dpi \
-        firefox@edge
+    apk --no-cache add openssh git chromium \
+        ttf-dejavu ttf-droid ttf-freefont ttf-liberation ttf-ubuntu-font-family ttf-opensans font-adobe-100dpi
 
 # Based on dockerfile at https://github.com/alexellis/jenkins2docker/blob/master/slave_node_alpine/Dockerfile
 RUN ssh-keygen -A
